@@ -1,5 +1,5 @@
 import Select from "./Select"
-import Header from "../Header/Header";
+import Header from "./Header/header"
 import Footer from "./Footer/Footer";
 import Container from "./container/Container";
 import Logo from "./Logo";
@@ -29,5 +29,5 @@ export {
     AuthLayout, 
     Input,
    Select,
-
+     //fixed
 }
