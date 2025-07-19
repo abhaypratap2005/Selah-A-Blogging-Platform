@@ -99,17 +99,23 @@ export class Service{
     // file upload service
 
     async uploadFile(file){
-        try {
-            return await this.bucket.createFile(
-                conf.appwriteBucketId,
-                ID.unique(),
-                file
-            )
-        } catch (error) {
-            console.log("Appwrite serive :: uploadFile :: error", error);
-            return false
-        }
-    }
+  try {
+    return await this.bucket.createFile(
+      conf.appwriteBucketId,
+      ID.unique(),
+      file,
+      [
+        Permission.read(Role.any()),     
+      ],
+      [
+        Permission.write(Role.user(client.getAccount().$id))  // adjust as needed
+      ]
+    );
+  } catch (error) {
+    console.log("Appwrite service :: uploadFile :: error", error);
+    return false
+  }
+}
 
     async deleteFile(fileId){
         try {
